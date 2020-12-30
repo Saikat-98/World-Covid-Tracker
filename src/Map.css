@@ -1,0 +1,68 @@
+.map {
+  height: 475px;
+  background-color: white;
+  padding: 1em;
+  border-radius: 20px;
+  margin-top: 16px;
+  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+}
+
+.map .leaflet-container {
+  height: 100%;
+}
+
+.map__circle {
+  opacity: 0.5;
+  animation: dot-anim linear 0.8s infinite;
+}
+
+@keyframes dot-anim {
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  81% {
+    opacity: 0.5;
+  }
+}
+
+.info-flag img {
+  width: 100px;
+  border-radius: 5px;
+}
+
+.info-name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #555;
+}
+
+.info-flag {
+  height: 80px;
+  width: 100%;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.info-container {
+  width: 150px;
+}
+
+.info-deaths, .info-recovered, .info-cases {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* 
+.map__recenter__button {
+  z-index: 1000 !important;
+  position: absolute !important;
+  bottom: 0px !important;
+  outline: none !important;
+  background-color: rgb(255 255 255) !important;
+  padding: 5px !important;
+  margin: 5px !important;
+  min-width: auto !important;
+} */
