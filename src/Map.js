@@ -1,5 +1,5 @@
 import React from 'react'
-import { Map as LeafletMap, TileLayer } from 'react-leaflet'
+import { MapContainer as LeafletMap, TileLayer } from 'react-leaflet'
 import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js'
 import './Map.css'
 import { showDataOnMap } from './util'
