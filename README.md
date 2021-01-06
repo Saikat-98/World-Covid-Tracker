@@ -7,13 +7,11 @@
 A World Covid Tracking site made completely on ReactJs, Firebase. The site shows data of confirmed, recovered and deaths of all the countries plotted on a world map. It also has some cool animations showing the top affected countries.
 
 ## Tech Stack 🗃
-<img src="https://img.shields.io/badge/-ReactJS-%2300bfff%20"> 
-<img src="https://img.shields.io/badge/-Firebase-yellowgreen">  
-<img src="https://img.shields.io/badge/-PWA-blue"> 
+<img src="https://img.shields.io/badge/-ReactJS-%2300bfff%20"> <img src="https://img.shields.io/badge/-Firebase-yellowgreen"> <img src="https://img.shields.io/badge/-PWA-blue"> 
 
 ## Demo 
-![World-Covid-Tracker](World-Covid-Tracker.png)
-![World-Covid-Tracker](World-Covid-Tracker.gif)
+![World-Covid-Tracker](public/World-Covid-Tracker.png)
+![World-Covid-Tracker](public/World-Covid-Tracker.gif)
  
 ##  Getting Started 👨‍💻
 ### Setup the repository to your local environment.
