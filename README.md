@@ -6,6 +6,7 @@
 [![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io)
 [![Issues](https://img.shields.io/github/issues/Saikat-98/World-Covid-Tracker)](#issues)
 [![forks](https://img.shields.io/github/forks/Saikat-98/World-Covid-Tracker)](#forks)
+[![license](https://img.shields.io/github/license/Saikat-98/World-Covid-Tracker)](#license)
 
 <strong> A World Covid Tracking site made completely on ReactJs, Firebase. The site shows data of confirmed, recovered and deaths of all the countries plotted on a world map. It also has some cool animations showing the top affected countries. </strong>
 
@@ -18,6 +19,11 @@
 ## How to contribute ?
 
 - Follow Contributon Guidelines mentioned [here](https://github.com/Saikat-98/World-Covid-Tracker/blob/main/CONTRIBUTING.md)
+
+## Demo ## How to contribute ?
+
+![World-Covid-Tracker](public/World-Covid-Tracker.png) - Follow Contributon Guidelines mentioned [here](https://github.com/Saikat-98/World-Covid-Tracker/blob/main/CONTRIBUTING.md)
+![World-Covid-Tracker](public/World-Covid-Tracker.gif)
 
 ## Getting Started 👨‍💻
 
