@@ -79,7 +79,7 @@ function App ( props ) {
               value={ country }
               onChange={ onCountryChange }
             >
-              <MenuItem value="worldwide">WorldWide</MenuItem>
+              <MenuItem value={ country }>WorldWide</MenuItem>
               { countries.map( ( country, index ) => (
                 <MenuItem
                   key={ `country-dropdown-${ index }` }
