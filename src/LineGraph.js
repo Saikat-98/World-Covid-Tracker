@@ -68,7 +68,7 @@ function LineGraph ( { casesType = "cases", ...props } ) {
       {
         const newDataPoint = {
           x: date,
-          y: data[ casesType ][ date ] - lastDataPoint
+          y: Math.abs( data[ casesType ][ date ] - lastDataPoint )
         }
         chartData.push( newDataPoint )
       }

@@ -36,7 +36,6 @@ export const prettyPrintStat = ( stat ) =>
   stat ? `+${ numeral( stat ).format( "0.0a" ) }` : "+0";
 
 export const showDataOnMap = ( data, caseType ) => {
-  // console.log( caseType, casesTypeColors[ caseType ].hex )
   data.sort( ( a, b ) => {
     if ( a[ caseType ] > b[ caseType ] ) return -1;
     return 1;
@@ -46,7 +45,7 @@ export const showDataOnMap = ( data, caseType ) => {
     return (
       <Circle
         center={ [ country.countryInfo.lat, country.countryInfo.long ] }
-        key={ `map-circle-${ index }` }
+        key={ `map-circle-${ caseType }-${ index }` }
         fillOpacity={ 0.4 }
         color={ casesTypeColors[ caseType ].hex }
         fillColor={ casesTypeColors[ caseType ].hex }
