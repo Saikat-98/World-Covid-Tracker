@@ -6,11 +6,11 @@ import { showDataOnMap, SetViewOnClick } from "./util";
 import "leaflet-fullscreen/dist/leaflet.fullscreen.css";
 import { useTheme } from '@material-ui/core/styles'
 
-function Map ( { countries, casesType, center, zoom, minZoom } ) {
+function DarkMap ( { countries, casesType, center, zoom, minZoom } ) {
   const theme = useTheme();
 
   return (
-    <div className='map' >
+    <div className='map dark--map' >
       <LeafletMap
         fullscreenControl={ true }
         center={ center }
@@ -21,7 +21,7 @@ function Map ( { countries, casesType, center, zoom, minZoom } ) {
           [ -90, 180 ]
         ] }
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <TileLayer url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png' />
         { showDataOnMap( countries, casesType, theme.palette.type ) }
         <SetViewOnClick zoom={ zoom } coords={ center } />
       </LeafletMap>
@@ -29,4 +29,4 @@ function Map ( { countries, casesType, center, zoom, minZoom } ) {
   );
 }
 
-export default Map;
+export default DarkMap;

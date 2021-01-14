@@ -1,10 +1,18 @@
 .map {
-  height: 475px;
+  height: 625px;
   background-color: white;
-  padding: 1em;
-  border-radius: 20px;
-  margin-top: 16px;
+  margin-top: 2em;
   box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+  transition: all 0.1s linear;
+}
+
+.dark--map {
+  background-color: #222222;
+  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.1);
+}
+
+.dark--popup .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background-color: #707070 !important;
 }
 
 .map .leaflet-container {
@@ -39,6 +47,10 @@
   color: #555;
 }
 
+.dark--name {
+  color: #C8C8C8 !important;
+}
+
 .info-flag {
   height: 80px;
   width: 100%;
@@ -53,6 +65,10 @@
 .info-deaths, .info-recovered, .info-cases {
   font-size: 12px;
   margin-top: 5px;
+}
+
+.dark--deaths, .dark--recovered, .dark--cases {
+  color: #C0C0C0 !important;
 }
 
 /* 

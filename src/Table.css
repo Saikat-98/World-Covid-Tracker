@@ -6,6 +6,11 @@
   /* background-color: white; */
 }
 
+.dark--table {
+  color: #C8C8C8 !important;
+  background-color: #303030 !important;
+}
+
 .table tr {
   display: flex;
   justify-content: space-between;
@@ -17,4 +22,30 @@
 
 .table tr:nth-of-type(odd) {
   background-color: #f3f2f8;
+}
+
+.dark--table tr:nth-of-type(odd) {
+  background-color: #404040;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

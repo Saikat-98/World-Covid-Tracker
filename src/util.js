@@ -1,6 +1,7 @@
 import React from "react";
 import numeral from "numeral";
-import { Circle, Popup } from "react-leaflet";
+import { Circle, Popup, useMap } from "react-leaflet";
+
 
 export const casesTypeColors = {
   cases: {
@@ -35,12 +36,15 @@ export const sortData = ( data ) => {
 export const prettyPrintStat = ( stat ) =>
   stat ? `+${ numeral( stat ).format( "0.0a" ) }` : "+0";
 
-export const showDataOnMap = ( data, caseType ) => {
+export const showDataOnMap = ( data, caseType, theme ) => {
+
   data.sort( ( a, b ) => {
     if ( a[ caseType ] > b[ caseType ] ) return -1;
     return 1;
   } );
+
   const topFiveCountries = data.slice( 0, 5 ).map( ( e ) => e.countryInfo.iso3 );
+
   return data.map( ( country, index ) => {
     return (
       <Circle
@@ -49,28 +53,23 @@ export const showDataOnMap = ( data, caseType ) => {
         fillOpacity={ 0.4 }
         color={ casesTypeColors[ caseType ].hex }
         fillColor={ casesTypeColors[ caseType ].hex }
-        radius={
-          Math.sqrt( country[ caseType ] ) * casesTypeColors[ caseType ].multiplier
-        }
-        className={ `${ topFiveCountries.includes( country.countryInfo.iso3 )
-          ? "map__circle"
-          : null
-          } ` }
-      >
-        <Popup>
+        radius={ Math.sqrt( country[ caseType ] ) * casesTypeColors[ caseType ].multiplier }
+        className={ `${ topFiveCountries.includes( country.countryInfo.iso3 ) ? "map__circle" : null } ` }>
+
+        <Popup className={ theme === 'dark' ? 'dark--popup' : null }>
           <div className="info-container">
             <div
               className="info-flag"
               style={ { backgroundImage: `url(${ country.countryInfo.flag })` } }
             ></div>
-            <div className="info-name">{ country.country }</div>
-            <div className="info-cases">
+            <div className={ theme === 'dark' ? 'info-name dark--name' : 'info-name' }>{ country.country }</div>
+            <div className={ theme === 'dark' ? "info-cases dark--cases" : "info-cases" }>
               Cases: { numeral( country.cases ).format( "0,0" ) }
             </div>
-            <div className="info-recovered">
+            <div className={ theme === 'dark' ? "info-recovered dark--recovered" : "info-recovered" }>
               Recovered: { numeral( country.recovered ).format( "0,0" ) }
             </div>
-            <div className="info-deaths">
+            <div className={ theme === 'dark' ? "info-deaths dark--deaths" : "info-deaths" }>
               Deaths: { numeral( country.deaths ).format( "0,0" ) }
             </div>
           </div>
@@ -79,3 +78,9 @@ export const showDataOnMap = ( data, caseType ) => {
     );
   } );
 };
+
+export function SetViewOnClick ( { coords, zoom } ) {
+  const map = useMap();
+  map.setView( coords, zoom );
+  return null;
+}

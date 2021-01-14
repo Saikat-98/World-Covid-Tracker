@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap');
 * {
   margin: 0
 }
@@ -10,6 +11,29 @@ body {
   display: flex;
   justify-content: space-evenly;
   padding: 5px;
+  height: calc(100vh - 10px);
+  overflow: hidden;
+  transition: all 1.5s linear;
+}
+
+.dark--main {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.dark--right {
+  background-color: #303030 !important;
+}
+
+.dark--right h3 {
+  color: #B8B8B8 !important;
+}
+
+.dark--select {
+  color: #A8A8A8 !important;
+}
+
+.dark--select svg {
+  color: #A8A8A8 !important;
 }
 
 .app__left {
@@ -20,6 +44,10 @@ body {
   background-color: white;
 }
 
+.dark--dropdown {
+  background-color: #303030;
+}
+
 .app__header {
   display: flex;
   align-items: center;
@@ -28,8 +56,25 @@ body {
 }
 
 .app__header>h1 {
-  color: #fc3c3c;
   font-size: 2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+.app__header__text {
+  color: green;
+  transform: all 1s linear;
+  animation: animate 1s infinite ease-in-out;
+}
+
+@keyframes animate {
+  0%, 100% {
+    filter: hue-rotate(360deg);
+    opacity: 0.2;
+  }
+  50% {
+    filter: hue-rotate(180deg);
+    opacity: 0.8;
+  }
 }
 
 .app__stats {
@@ -49,12 +94,12 @@ body {
 }
 
 .app__graph {
-  margin-top: 10px;
+  margin-top: 1rem;
   flex-grow: 1;
 }
 
 .app__graphTitle {
-  margin-top: 20px;
+  margin-top: 1em;
 }
 
 @media(max-width: 990px) {

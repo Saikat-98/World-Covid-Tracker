@@ -7,18 +7,36 @@
   margin-right: 10px;
 }
 
+.dark--stats {
+  background-color: #303030 !important;
+}
+
 .infoBox__cases {
   color: #cc1034;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 0.5rem;
+}
+
+.infoBox__title {
+  color: #000 !important;
+  font-size: 1.2em !important;
+  font-family: bolder !important;
+}
+
+.dark--title {
+  color: #A8A8A8 !important;
 }
 
 .infoBox__total {
   color: #6c757d;
   font-weight: 700 !important;
   font-size: 0.9rem !important;
-  margin-bottom: 15px !important;
+  margin-bottom: 5px !important;
+}
+
+.dark--total {
+  color: #888888 !important;
 }
 
 .infoBox--selected {
