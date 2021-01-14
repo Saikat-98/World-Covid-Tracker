@@ -47,7 +47,7 @@ Following are the steps to run the frontend of the World-Covid-Tracker. All the 
 
 ## Programs We have been associated with 🤍
 
-<a href="https://devscript.tech/woc/" target="_blank"><img src="assets/DWoC.png" width="180px" height="180px"></a>
+<a href="https://devscript.tech/woc/" target="_blank"><img src="/DWoC.png" width="180px" height="180px"></a>
 
 ## Contributors 🌟
 
