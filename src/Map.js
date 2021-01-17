@@ -6,24 +6,26 @@ import { showDataOnMap, SetViewOnClick } from "./util";
 import "leaflet-fullscreen/dist/leaflet.fullscreen.css";
 import { useTheme } from '@material-ui/core/styles'
 
-function Map ( { countries, casesType, center, zoom, minZoom } ) {
+function Map({ countries, casesType, center, zoom, minZoom }) {
   const theme = useTheme();
 
   return (
     <div className='map' >
       <LeafletMap
-        fullscreenControl={ true }
-        center={ center }
-        zoom={ zoom }
-        minZoom={ minZoom }
-        maxBounds={ [
-          [ 90, -180 ],
-          [ -90, 180 ]
-        ] }
+        fullscreenControl={true}
+        center={center}
+        zoom={zoom}
+        minZoom={minZoom}
+        bounceAtZoomLimits={true}
+        maxBoundsViscosity={.95}
+        maxBounds={[
+          [90, -180],
+          [-90, 180]
+        ]}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        { showDataOnMap( countries, casesType, theme.palette.type ) }
-        <SetViewOnClick zoom={ zoom } coords={ center } />
+        {showDataOnMap(countries, casesType, theme.palette.type)}
+        <SetViewOnClick zoom={zoom} coords={center} />
       </LeafletMap>
     </div>
   );

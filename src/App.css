@@ -5,6 +5,7 @@
 
 body {
   background-color: #f5f6fa;
+  font-family: 'Lato', sans-serif;
 }
 
 .app {
@@ -12,12 +13,28 @@ body {
   justify-content: space-evenly;
   padding: 5px;
   height: calc(100vh - 10px);
-  overflow: hidden;
-  transition: all 1.5s linear;
+  transition: all 1.1s linear;
+}
+
+.app--small {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1em;
+  overflow: auto;
+  flex-direction: column;
+  transition: all 1.1s linear;
+}
+
+.app__header__text--type>.app__header__text--txt {
+  border-right: 0.2rem solid #777;
+}
+
+.app__toggle--margin {
+  margin-right: 30px !important;
 }
 
 .dark--main {
-  background-color: rgba(0, 0, 0, 0.9) !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .dark--right {
@@ -37,6 +54,7 @@ body {
 }
 
 .app__left {
+  margin-top: 2em;
   flex: 0.9;
 }
 
@@ -52,28 +70,40 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  position: relative;
   justify-content: space-between;
 }
 
 .app__header>h1 {
   font-size: 2rem;
-  font-family: 'Lato', sans-serif;
 }
 
 .app__header__text {
-  color: green;
-  transform: all 1s linear;
-  animation: animate 1s infinite ease-in-out;
+  animation: animate 2s infinite ease-in-out;
+}
+
+.app__header__text--color-cases {
+  color: #CC1034;
+}
+
+.app__header__text--color-recovered {
+  color: #7dd71d;
+}
+
+.app__header__text--color-deaths {
+  color: #fb4443;
+}
+
+.app__header__text>div {
+  display: inline;
 }
 
 @keyframes animate {
   0%, 100% {
-    filter: hue-rotate(360deg);
-    opacity: 0.2;
+    opacity: 0.6;
   }
   50% {
-    filter: hue-rotate(180deg);
-    opacity: 0.8;
+    opacity: 1;
   }
 }
 
@@ -85,6 +115,8 @@ body {
 .app__right {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .app__right .MuiCardContent-root {
@@ -100,10 +132,20 @@ body {
 
 .app__graphTitle {
   margin-top: 1em;
+  text-transform: uppercase;
 }
 
 @media(max-width: 990px) {
-  .app {
-    flex-direction: column;
+  .app__left {
+    margin-top: 0
+  }
+  .app__toggle--margin {
+    padding: 8px !important;
+  }
+}
+
+@media(max-width: 500px) {
+  .app__header>h1 {
+    font-size: 1.25em;
   }
 }

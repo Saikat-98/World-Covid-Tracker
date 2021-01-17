@@ -21,7 +21,7 @@
 .infoBox__title {
   color: #000 !important;
   font-size: 1.2em !important;
-  font-family: bolder !important;
+  font-weight: bolder !important;
 }
 
 .dark--title {

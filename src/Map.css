@@ -1,7 +1,7 @@
 .map {
-  height: 625px;
+  height: 40em;
   background-color: white;
-  margin-top: 2em;
+  margin-top: 5em;
   box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
   transition: all 0.1s linear;
 }

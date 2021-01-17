@@ -3,8 +3,8 @@ import { Line } from 'react-chartjs-2'
 import numeral from 'numeral'
 import { casesTypeColors } from './util'
 
-function LineGraph ( { casesType = "cases", theme, ...props } ) {
-  const [ data, setData ] = useState( {} )
+function LineGraph({ casesType = "cases", theme, ...props }) {
+  const [data, setData] = useState({})
 
   const options = {
     legend: {
@@ -20,13 +20,13 @@ function LineGraph ( { casesType = "cases", theme, ...props } ) {
       mode: "index",
       intersect: false,
       callbacks: {
-        label: function ( tooltipItem, data ) {
-          return numeral( tooltipItem.value ).format( "+0,0" )
+        label: function (tooltipItem, data) {
+          return numeral(tooltipItem.value).format("+0,0")
         }
       }
     },
     scales: {
-      xAxes: [ {
+      xAxes: [{
         type: "time",
         time: {
           parser: "MM/DD/YY",
@@ -36,103 +36,97 @@ function LineGraph ( { casesType = "cases", theme, ...props } ) {
           drawOnChartArea: false,
           color: theme === 'light' ? 'rgba(0,0,0,0.35)' : '#505050'
         },
-      } ],
-      yAxes: [ {
+      }],
+      yAxes: [{
         gridLines: {
           drawOnChartArea: false,
           color: theme === 'light' ? 'rgba(0,0,0,0.35)' : '#505050'
         },
         ticks: {
-          callback: function ( value, index, values ) {
-            return numeral( value ).format( "0a" )
+          callback: function (value, index, values) {
+            return numeral(value).format("0a")
           }
         }
-      } ]
+      }]
     }
   }
 
-  var chart = document.getElementById( "chart" )
-  if ( chart )
-  {
-    var ctx = chart.getContext( "2d" );
+  var chart = document.getElementById("chart")
+  if (chart) {
+    var ctx = chart.getContext("2d");
 
-    var gradient = ctx.createLinearGradient( 0, 0, 0, 550 );
+    var gradient = ctx.createLinearGradient(0, 0, 0, 430);
 
-    if ( casesType === "cases" )
-    {
-      gradient.addColorStop( 0, 'rgba(204,16,52,1)' );
-      gradient.addColorStop( 0.1, 'rgba(204,16,52,0.8)' );
-      gradient.addColorStop( 0.2, 'rgba(204,16,52,0.7)' );
-      gradient.addColorStop( 0.3, 'rgba(204,16,52,0.6)' );
-      theme === "dark" && gradient.addColorStop( 0.6, '#303030' );
-      theme === "light" && gradient.addColorStop( 0.6, '#fff' );
+    if (casesType === "cases") {
+      gradient.addColorStop(0, 'rgba(204,16,52,1)');
+      gradient.addColorStop(0.1, 'rgba(204,16,52,0.8)');
+      gradient.addColorStop(0.2, 'rgba(204,16,52,0.7)');
+      gradient.addColorStop(0.3, 'rgba(204,16,52,0.6)');
+      theme === "dark" && gradient.addColorStop(0.6, '#303030');
+      theme === "light" && gradient.addColorStop(0.6, '#fff');
     }
-    else if ( casesType === "deaths" )
-    {
-      gradient.addColorStop( 0, 'rgba(258,68,67,0.8)' );
-      gradient.addColorStop( 0.1, 'rgba(258,68,67,0.6)' );
-      gradient.addColorStop( 0.2, 'rgba(258,68,67,0.5)' );
-      gradient.addColorStop( 0.3, 'rgba(258,68,67,0.3)' );
-      theme === "dark" && gradient.addColorStop( 0.6, '#303030' );
-      theme === "light" && gradient.addColorStop( 0.6, '#fff' );
+    else if (casesType === "deaths") {
+      gradient.addColorStop(0, 'rgba(258,68,67,0.8)');
+      gradient.addColorStop(0.1, 'rgba(258,68,67,0.6)');
+      gradient.addColorStop(0.2, 'rgba(258,68,67,0.5)');
+      gradient.addColorStop(0.3, 'rgba(258,68,67,0.3)');
+      theme === "dark" && gradient.addColorStop(0.6, '#303030');
+      theme === "light" && gradient.addColorStop(0.6, '#fff');
     }
-    else if ( casesType === "recovered" )
-    {
-      gradient = ctx.createLinearGradient( 0, 0, 0, 620 );
+    else if (casesType === "recovered") {
+      gradient = ctx.createLinearGradient(0, 0, 0, 500);
 
-      gradient.addColorStop( 0, 'rgba(125,215,29,0.8)' );
-      gradient.addColorStop( 0.1, 'rgba(125,215,29,0.6)' );
-      gradient.addColorStop( 0.2, 'rgba(125,215,29,0.5)' );
-      gradient.addColorStop( 0.3, 'rgba(125,215,29,0.3)' );
-      theme === "dark" && gradient.addColorStop( 0.6, '#303030' );
-      theme === "light" && gradient.addColorStop( 0.6, '#fff' );
+      gradient.addColorStop(0, 'rgba(125,215,29,0.8)');
+      gradient.addColorStop(0.1, 'rgba(125,215,29,0.6)');
+      gradient.addColorStop(0.2, 'rgba(125,215,29,0.5)');
+      gradient.addColorStop(0.3, 'rgba(125,215,29,0.3)');
+      theme === "dark" && gradient.addColorStop(0.6, '#303030');
+      theme === "light" && gradient.addColorStop(0.6, '#fff');
     }
   }
-  useEffect( () => {
+  useEffect(() => {
     const fetchData = async () => {
-      await fetch( "https://disease.sh/v3/covid-19/historical/all?lastdays=90" )
-        .then( response => response.json() )
-        .then( data => {
-          const chartData = buildChartData( data, casesType )
-          setData( chartData )
-        } )
+      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=90")
+        .then(response => response.json())
+        .then(data => {
+          const chartData = buildChartData(data, casesType)
+          setData(chartData)
+        })
     }
     fetchData()
 
-  }, [ casesType ] )
+  }, [casesType])
 
-  const buildChartData = ( data, casesType = "cases" ) => {
+  const buildChartData = (data, casesType = "cases") => {
     const chartData = []
     let lastDataPoint;
 
-    for ( let date in data.cases )
-    {
-      if ( lastDataPoint )
-      {
+    for (let date in data.cases) {
+      if (lastDataPoint) {
         const newDataPoint = {
           x: date,
-          y: Math.abs( data[ casesType ][ date ] - lastDataPoint )
+          y: Math.abs(data[casesType][date] - lastDataPoint)
         }
-        chartData.push( newDataPoint )
+        chartData.push(newDataPoint)
       }
-      lastDataPoint = data[ casesType ][ date ]
+      lastDataPoint = data[casesType][date]
     }
     return chartData
   }
 
   return (
-    <div className={ props.className }>
+    <div className={props.className}>
       { data?.length > 0 && <Line className="line__chart" id="chart"
-        options={ options }
-        data={ {
-          datasets: [ {
+        options={options}
+        data={{
+          datasets: [{
             // fillColor: gradient,
             backgroundColor: gradient,
-            borderColor: `${ casesTypeColors[ casesType ].hex }`,
+            borderColor: `${casesTypeColors[casesType].hex}`,
             data: data
-          } ]
-        } }
-      /> }
+          }]
+        }}
+      />}
     </div>
   )
 }
