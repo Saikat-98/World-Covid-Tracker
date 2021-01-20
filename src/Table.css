@@ -3,7 +3,6 @@
   overflow-y: scroll;
   height: 420px;
   color: #6a5d5d;
-  /* background-color: white; */
 }
 
 .dark--table {
@@ -29,7 +28,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */

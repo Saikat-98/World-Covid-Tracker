@@ -120,7 +120,6 @@ function LineGraph({ casesType = "cases", theme, ...props }) {
         options={options}
         data={{
           datasets: [{
-            // fillColor: gradient,
             backgroundColor: gradient,
             borderColor: `${casesTypeColors[casesType].hex}`,
             data: data

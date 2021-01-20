@@ -24,63 +24,66 @@ export const casesTypeColors = {
   }
 };
 
-export const sortData = ( data ) => {
-  const sortedData = [ ...data ];
-  sortedData.sort( ( a, b ) => {
-    if ( a.cases > b.cases ) return -1;
+export const sortData = (data) => {
+  const sortedData = [...data];
+  sortedData.sort((a, b) => {
+    if (a.cases > b.cases) return -1;
     return 1;
-  } );
+  });
   return sortedData;
 };
 
-export const prettyPrintStat = ( stat ) =>
-  stat ? `+${ numeral( stat ).format( "0.0a" ) }` : "+0";
+export const prettyPrintStat = (stat) =>
+  stat ? `+${numeral(stat).format("0.0a")}` : "+0";
 
-export const showDataOnMap = ( data, caseType, theme ) => {
+export const showDataOnMap = (data, caseType, theme) => {
 
-  data.sort( ( a, b ) => {
-    if ( a[ caseType ] > b[ caseType ] ) return -1;
+  data.sort((a, b) => {
+    if (a[caseType] > b[caseType]) return -1;
     return 1;
-  } );
+  });
 
-  const topFiveCountries = data.slice( 0, 5 ).map( ( e ) => e.countryInfo.iso3 );
+  const topFiveCountries = data.slice(0, 5).map((e) => e.countryInfo.iso3);
 
-  return data.map( ( country, index ) => {
+  return data.map((country, index) => {
     return (
       <Circle
-        center={ [ country.countryInfo.lat, country.countryInfo.long ] }
-        key={ `map-circle-${ caseType }-${ index }` }
-        fillOpacity={ 0.4 }
-        color={ casesTypeColors[ caseType ].hex }
-        fillColor={ casesTypeColors[ caseType ].hex }
-        radius={ Math.sqrt( country[ caseType ] ) * casesTypeColors[ caseType ].multiplier }
-        className={ `${ topFiveCountries.includes( country.countryInfo.iso3 ) ? "map__circle" : null } ` }>
+        center={[country.countryInfo.lat, country.countryInfo.long]}
+        key={`map-circle-${caseType}-${index}`}
+        fillOpacity={0.4}
+        color={casesTypeColors[caseType].hex}
+        fillColor={casesTypeColors[caseType].hex}
+        radius={Math.sqrt(country[caseType]) * casesTypeColors[caseType].multiplier}
+        className={`${topFiveCountries.includes(country.countryInfo.iso3) ? "map__circle" : null} `}>
 
-        <Popup className={ theme === 'dark' ? 'dark--popup' : null }>
+        <Popup className={theme === 'dark' ? 'dark--popup' : null}>
           <div className="info-container">
             <div
               className="info-flag"
-              style={ { backgroundImage: `url(${ country.countryInfo.flag })` } }
+              style={{ backgroundImage: `url(${country.countryInfo.flag})` }}
             ></div>
-            <div className={ theme === 'dark' ? 'info-name dark--name' : 'info-name' }>{ country.country }</div>
-            <div className={ theme === 'dark' ? "info-cases dark--cases" : "info-cases" }>
-              Cases: { numeral( country.cases ).format( "0,0" ) }
+            <div className={theme === 'dark' ? 'info-name dark--name' : 'info-name'}>{country.country}</div>
+            <div className={theme === 'dark' ? "info-cases dark--cases" : "info-cases"}>
+              Cases: {numeral(country.cases).format("0,0")}
             </div>
-            <div className={ theme === 'dark' ? "info-recovered dark--recovered" : "info-recovered" }>
-              Recovered: { numeral( country.recovered ).format( "0,0" ) }
+            <div className={theme === 'dark' ? "info-recovered dark--recovered" : "info-recovered"}>
+              Recovered: {numeral(country.recovered).format("0,0")}
             </div>
-            <div className={ theme === 'dark' ? "info-deaths dark--deaths" : "info-deaths" }>
-              Deaths: { numeral( country.deaths ).format( "0,0" ) }
+            <div className={theme === 'dark' ? "info-deaths dark--deaths" : "info-deaths"}>
+              Deaths: {numeral(country.deaths).format("0,0")}
             </div>
           </div>
         </Popup>
       </Circle>
     );
-  } );
+  });
 };
 
-export function SetViewOnClick ( { coords, zoom } ) {
+export function SetViewOnClick({ coords, zoom, country }) {
   const map = useMap();
-  map.setView( coords, zoom );
+  if (country === "worldwide")
+    map.setView([0, 0], zoom);
+  else
+    map.setView(coords, zoom);
   return null;
 }

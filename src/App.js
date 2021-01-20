@@ -81,26 +81,31 @@ function App(props) {
     }
   }, [])
 
-  const onCountryChange = async (event) => {
+  const onCountryChange = (event) => {
     let countryCode = event.target.value;
     setCountry(countryCode);
+  }
 
+  useEffect(() => {
     const url =
-      countryCode === "worldwide"
+      country === "worldwide"
         ? "https://disease.sh/v3/covid-19/all"
-        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
-    await fetch(url)
+        : `https://disease.sh/v3/covid-19/countries/${country}`;
+
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        if (countryCode === "worldwide") setMapCenter([0, 0]);
-        else setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-        setCountryInfo(data);
-        if (countryCode === "worldwide")
+        if (country === "worldwide") {
+          setMapCenter([0, 0]);
           setMapZoom(props.width === 'xs' ? 2 : 3)
-        else
+        }
+        else if (country !== "worldwide") {
+          setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
           setMapZoom(props.width === 'xs' ? 3 : 5)
+        }
+        setCountryInfo(data);
       });
-  };
+  }, [country, mapZoom]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -179,12 +184,14 @@ function App(props) {
             countries={mapCountries}
             casesType={casesType}
             minZoom={mapZoom}
+            country={country}
           /> : <DarkMap
               center={mapCenter}
               zoom={mapZoom}
               countries={mapCountries}
               casesType={casesType}
               minZoom={mapZoom}
+              country={country}
             />}
         </div>
 
