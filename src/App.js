@@ -30,7 +30,7 @@ function App(props) {
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState([0, 0]);
-  const [mapZoom, setMapZoom] = useState(props.width === "xs" ? 2 : 3);
+  const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState("cases");
   const [darkState, setDarkState] = useState(false);
@@ -97,11 +97,11 @@ function App(props) {
       .then((data) => {
         if (country === "worldwide") {
           setMapCenter([0, 0]);
-          setMapZoom(props.width === 'xs' ? 2 : 3)
+          setMapZoom(3)
         }
         else if (country !== "worldwide") {
           setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-          setMapZoom(props.width === 'xs' ? 3 : 5)
+          setMapZoom(5)
         }
         setCountryInfo(data);
       });

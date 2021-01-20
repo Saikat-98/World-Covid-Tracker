@@ -82,7 +82,7 @@ export const showDataOnMap = (data, caseType, theme) => {
 export function SetViewOnClick({ coords, zoom, country }) {
   const map = useMap();
   if (country === "worldwide")
-    map.setView([0, 0], zoom);
+    map.setView([0, 0], 3);
   else
     map.setView(coords, zoom);
   return null;
