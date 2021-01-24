@@ -14,7 +14,7 @@
 
 ## Tech Stack 🗃
 
-<img src="https://img.shields.io/badge/-expressJS-yellowgreen"> <img src="https://img.shields.io/badge/-ReactJS-%2300bfff%20"> <img src="https://img.shields.io/badge/-NodeJS-black?style=flat&logo=node.js"> <img src="https://img.shields.io/badge/-Firebase-yellowgreen"> <img src="https://img.shields.io/badge/-PWA-blue">
+<img src="https://img.shields.io/badge/-expressJS-yellowgreen"> <img src="https://img.shields.io/badge/-ReactJS-%2300bfff%20"> <img src="https://img.shields.io/badge/-NodeJS-black?style=flat&logo=node.js"> <img src="https://img.shields.io/badge/-Firebase-orange"> <img src="https://img.shields.io/badge/-PWA-blue"><img src="https://img.shields.io/badge/-MaterialUI-blue">
 
 ## How to contribute ?
 
