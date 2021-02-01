@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: rgb(187, 122, 122);
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(187, 122, 122);
+    font: italic 3em "Fira Sans", serif;
+    font: outline;
+    font-weight: bolder;
+    font-style: initial;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-name: open;
+    animation-duration: 4s;
+    animation-delay: 4.5s;
+    animation-fill-mode: both;
+}
+
+.splash .img {
+    background-image: url("./COVID-LOGO.png");
+    height: 33%;
+    width: 16.50%;
+    z-index: auto;
+}
+
+.splash::after,
+.splash::before {
+    content: "";
+    position: absolute;
+    background-color: rgb(187, 122, 122);
+    height: 100%;
+    width: 75%;
+    z-index: 99;
+    animation-name: open;
+    animation-fill-mode: forwards;
+    animation-duration: 3s;
+}
+
+.splash::after {
+    left: 30vw;
+    animation-delay: 200ms;
+}
+
+.splash::before {
+    left: 0;
+    animation-delay: 2s;
+}
+
+@keyframes open {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(100%, 0);
+    }
+}
