@@ -20,7 +20,7 @@ code {
     height: 100%;
     width: 100%;
     background-color: rgb(187, 122, 122);
-    font: italic 3em "Fira Sans", serif;
+    font: italic 4em "Fira Sans", serif;
     font: outline;
     font-weight: bolder;
     font-style: initial;
@@ -29,16 +29,21 @@ code {
     align-items: center;
     justify-content: center;
     animation-name: open;
-    animation-duration: 4s;
-    animation-delay: 4.5s;
+    animation-duration: 6.5s;
+    animation-delay: 6s;
     animation-fill-mode: both;
 }
 
 .splash .img {
-    background-image: url("./COVID-LOGO.png");
     height: 33%;
     width: 16.50%;
     z-index: auto;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-right: 0;
+    margin-bottom: 0;
+    float: left;
 }
 
 .splash::after,
@@ -51,12 +56,12 @@ code {
     z-index: 99;
     animation-name: open;
     animation-fill-mode: forwards;
-    animation-duration: 3s;
+    animation-duration: 4s;
 }
 
 .splash::after {
     left: 30vw;
-    animation-delay: 200ms;
+    animation-delay: 2s;
 }
 
 .splash::before {
